@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: zuul
+  cloud:
+    config:
+      override-none: true
+     
+server:
+  port: 3001
+  
+eureka:
+  client:
+    service-url:
+      defaultzone: http://eureka1:8761/eureka/
+      fetch-registry: false
+      
+zuul:
+  routes:
+   item-service: /item-service/**
+   user-service: /user-service/**
+   order-service: /order-service/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
